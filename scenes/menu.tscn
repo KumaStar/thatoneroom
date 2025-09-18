@@ -1,0 +1,133 @@
+[gd_scene load_steps=11 format=3 uid="uid://u3l7douhdjn3"]
+
+[ext_resource type="Texture2D" uid="uid://cd3yj62ou35sf" path="res://assets/background/image.png" id="1_yqeox"]
+[ext_resource type="Script" uid="uid://bnhl0b2op1rpb" path="res://scripts/v_box_container.gd" id="2_4ytvr"]
+[ext_resource type="FontFile" uid="uid://wgfwoljkpvn5" path="res://assets/texts/KimsBitHand.ttf" id="2_con2f"]
+[ext_resource type="Texture2D" uid="uid://c2lijdala3nl" path="res://assets/Title_2.png" id="5_4ytvr"]
+[ext_resource type="Texture2D" uid="uid://cg11tr574re0g" path="res://assets/Character/char_down.png" id="5_g3eks"]
+[ext_resource type="Texture2D" uid="uid://cxk614phnocpr" path="res://assets/Character/Facial Expression/char_escared_down.png" id="6_v86rl"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_g3eks"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_v86rl"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_13sgg"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_i6lef"]
+
+[node name="menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0.089)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_yqeox")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.66
+anchor_top = 0.549
+anchor_right = 0.868
+anchor_bottom = 0.945
+offset_left = -0.200073
+offset_top = 0.0799561
+offset_right = 0.439941
+offset_bottom = 0.399963
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_4ytvr")
+
+[node name="play" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_con2f")
+theme_override_font_sizes/font_size = 70
+theme_override_styles/focus = SubResource("StyleBoxEmpty_g3eks")
+text = "PLAY"
+flat = true
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 10
+
+[node name="settings" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_con2f")
+theme_override_font_sizes/font_size = 70
+theme_override_styles/focus = SubResource("StyleBoxEmpty_v86rl")
+text = "SETTINGS"
+flat = true
+
+[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 10
+
+[node name="credits" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_con2f")
+theme_override_font_sizes/font_size = 70
+theme_override_styles/focus = SubResource("StyleBoxEmpty_13sgg")
+text = "CREDITS"
+flat = true
+
+[node name="MarginContainer3" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 10
+
+[node name="exit" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_con2f")
+theme_override_font_sizes/font_size = 70
+theme_override_styles/focus = SubResource("StyleBoxEmpty_i6lef")
+text = "EXIT"
+flat = true
+
+[node name="Title2" type="Sprite2D" parent="."]
+position = Vector2(1485, 298)
+scale = Vector2(0.465063, 0.575334)
+texture = ExtResource("5_4ytvr")
+
+[node name="CharDown" type="Sprite2D" parent="."]
+position = Vector2(612, 663.375)
+scale = Vector2(21, 19.043)
+texture = ExtResource("5_g3eks")
+
+[node name="CharEscaredDown" type="Sprite2D" parent="."]
+position = Vector2(617.5, 666.5)
+scale = Vector2(22.4688, 18.7969)
+texture = ExtResource("6_v86rl")
+
+[connection signal="focus_entered" from="VBoxContainer/play" to="VBoxContainer" method="_on_play_focus_entered"]
+[connection signal="focus_exited" from="VBoxContainer/play" to="VBoxContainer" method="_on_play_focus_exited"]
+[connection signal="mouse_entered" from="VBoxContainer/play" to="VBoxContainer" method="_on_play_mouse_entered"]
+[connection signal="mouse_exited" from="VBoxContainer/play" to="VBoxContainer" method="_on_play_mouse_exited"]
+[connection signal="pressed" from="VBoxContainer/play" to="VBoxContainer" method="_on_play_pressed"]
+[connection signal="focus_entered" from="VBoxContainer/settings" to="VBoxContainer" method="_on_settings_focus_entered"]
+[connection signal="focus_exited" from="VBoxContainer/settings" to="VBoxContainer" method="_on_settings_focus_exited"]
+[connection signal="mouse_entered" from="VBoxContainer/settings" to="VBoxContainer" method="_on_settings_mouse_entered"]
+[connection signal="mouse_exited" from="VBoxContainer/settings" to="VBoxContainer" method="_on_settings_mouse_exited"]
+[connection signal="pressed" from="VBoxContainer/settings" to="VBoxContainer" method="settings_pressed"]
+[connection signal="pressed" from="VBoxContainer/settings" to="VBoxContainer" method="_on_settings_pressed"]
+[connection signal="focus_entered" from="VBoxContainer/credits" to="VBoxContainer" method="_on_credits_focus_entered"]
+[connection signal="focus_exited" from="VBoxContainer/credits" to="VBoxContainer" method="_on_credits_focus_exited"]
+[connection signal="mouse_entered" from="VBoxContainer/credits" to="VBoxContainer" method="_on_credits_mouse_entered"]
+[connection signal="mouse_exited" from="VBoxContainer/credits" to="VBoxContainer" method="_on_credits_mouse_exited"]
+[connection signal="pressed" from="VBoxContainer/credits" to="VBoxContainer" method="_on_credits_pressed"]
+[connection signal="focus_entered" from="VBoxContainer/exit" to="VBoxContainer" method="_on_exit_focus_entered"]
+[connection signal="focus_exited" from="VBoxContainer/exit" to="VBoxContainer" method="_on_exit_focus_exited"]
+[connection signal="mouse_entered" from="VBoxContainer/exit" to="VBoxContainer" method="_on_exit_mouse_entered"]
+[connection signal="mouse_exited" from="VBoxContainer/exit" to="VBoxContainer" method="_on_exit_mouse_exited"]
+[connection signal="pressed" from="VBoxContainer/exit" to="VBoxContainer" method="_on_exit_pressed"]

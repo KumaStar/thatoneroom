@@ -1,0 +1,97 @@
+[gd_scene load_steps=6 format=3 uid="uid://u3l7douhdjn3"]
+
+[ext_resource type="Texture2D" uid="uid://cd3yj62ou35sf" path="res://assets/background/image.png" id="1_yqeox"]
+[ext_resource type="Script" uid="uid://bnhl0b2op1rpb" path="res://scenes/v_box_container.gd" id="2_4ytvr"]
+[ext_resource type="FontFile" uid="uid://wgfwoljkpvn5" path="res://assets/texts/KimsBitHand.ttf" id="2_con2f"]
+[ext_resource type="Texture2D" uid="uid://ce35lb01vdfm8" path="res://assets/Screenshot 2025-09-16 024618.png" id="2_vjb58"]
+[ext_resource type="Texture2D" uid="uid://5p5qa00cb01x" path="res://assets/char_idle.webp" id="4_mhnvy"]
+
+[node name="menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color(0.18, 0.1386, 0.1386, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_yqeox")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(700, 400)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 132.0
+offset_top = 65.0
+offset_right = 832.0
+offset_bottom = 493.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_4ytvr")
+
+[node name="Button" type="Button" parent="VBoxContainer"]
+modulate = Color(1, 0.21, 0.21, 1)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_con2f")
+theme_override_font_sizes/font_size = 70
+text = "PLAY"
+flat = true
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 10
+
+[node name="Button2" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_con2f")
+theme_override_font_sizes/font_size = 70
+text = "SETTINGS"
+flat = true
+
+[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 10
+
+[node name="Button3" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_con2f")
+theme_override_font_sizes/font_size = 70
+text = "CREDITS"
+flat = true
+
+[node name="MarginContainer3" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 10
+
+[node name="Button4" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_con2f")
+theme_override_font_sizes/font_size = 70
+text = "EXIT"
+flat = true
+
+[node name="Screenshot2025-09-16024618" type="Sprite2D" parent="."]
+position = Vector2(1444, 299)
+scale = Vector2(0.744652, 0.781667)
+texture = ExtResource("2_vjb58")
+
+[node name="CharIdle" type="Sprite2D" parent="."]
+position = Vector2(463, 574)
+scale = Vector2(23.1875, 19.9219)
+texture = ExtResource("4_mhnvy")
+
+[connection signal="pressed" from="VBoxContainer/Button" to="VBoxContainer" method="_on_button_pressed"]
