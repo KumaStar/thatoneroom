@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://u3l7douhdjn3"]
 
 [ext_resource type="Texture2D" uid="uid://cd3yj62ou35sf" path="res://assets/background/image.png" id="1_yqeox"]
-[ext_resource type="Script" uid="uid://bnhl0b2op1rpb" path="res://scripts/v_box_container.gd" id="2_4ytvr"]
+[ext_resource type="Script" uid="uid://bnhl0b2op1rpb" path="res://scripts/mainmenu.gd" id="2_4ytvr"]
 [ext_resource type="FontFile" uid="uid://wgfwoljkpvn5" path="res://assets/texts/KimsBitHand.ttf" id="2_con2f"]
 [ext_resource type="Texture2D" uid="uid://c2lijdala3nl" path="res://assets/Title_2.png" id="5_4ytvr"]
 [ext_resource type="Texture2D" uid="uid://cg11tr574re0g" path="res://assets/Character/char_down.png" id="5_g3eks"]
@@ -119,8 +119,8 @@ texture = ExtResource("6_v86rl")
 [connection signal="focus_exited" from="VBoxContainer/settings" to="VBoxContainer" method="_on_settings_focus_exited"]
 [connection signal="mouse_entered" from="VBoxContainer/settings" to="VBoxContainer" method="_on_settings_mouse_entered"]
 [connection signal="mouse_exited" from="VBoxContainer/settings" to="VBoxContainer" method="_on_settings_mouse_exited"]
-[connection signal="pressed" from="VBoxContainer/settings" to="VBoxContainer" method="settings_pressed"]
 [connection signal="pressed" from="VBoxContainer/settings" to="VBoxContainer" method="_on_settings_pressed"]
+[connection signal="pressed" from="VBoxContainer/settings" to="VBoxContainer" method="settings_pressed"]
 [connection signal="focus_entered" from="VBoxContainer/credits" to="VBoxContainer" method="_on_credits_focus_entered"]
 [connection signal="focus_exited" from="VBoxContainer/credits" to="VBoxContainer" method="_on_credits_focus_exited"]
 [connection signal="mouse_entered" from="VBoxContainer/credits" to="VBoxContainer" method="_on_credits_mouse_entered"]
