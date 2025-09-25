@@ -1,7 +1,26 @@
 extends VBoxContainer
 
+# Array of menu buttons for navigation
+var menu_buttons = []
+var current_focus_index = 0
+
 func _ready() -> void:
-	$play.grab_focus() 
+	# Initialize the menu buttons array
+	menu_buttons = [$play, $settings, $credits, $exit]
+	$play.grab_focus()
+	current_focus_index = 0
+	
+# Handle input events including mouse wheel
+func _input(event) -> void:
+	if event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_WHEEL_DOWN and event.pressed:
+			# Move focus to the next button
+			current_focus_index = min(current_focus_index + 1, menu_buttons.size() - 1)
+			menu_buttons[current_focus_index].grab_focus()
+		elif event.button_index == MOUSE_BUTTON_WHEEL_UP and event.pressed:
+			# Move focus to the previous button
+			current_focus_index = max(current_focus_index - 1, 0)
+			menu_buttons[current_focus_index].grab_focus()
 # -------------------------
 # Play Button
 # -------------------------
@@ -19,6 +38,7 @@ func _on_play_pressed() -> void:
 
 func _on_play_mouse_entered() -> void:
 	$play.grab_focus() # make hover = focus
+	current_focus_index = 0 # Update current index when hovering
 
 
 # -------------------------
@@ -38,6 +58,7 @@ func _on_settings_pressed() -> void:
 
 func _on_settings_mouse_entered() -> void:
 	$settings.grab_focus()
+	current_focus_index = 1 # Update current index when hovering
 
 
 # -------------------------
@@ -57,6 +78,7 @@ func _on_credits_pressed() -> void:
 
 func _on_credits_mouse_entered() -> void:
 	$credits.grab_focus()
+	current_focus_index = 2 # Update current index when hovering
 
 
 # -------------------------
@@ -76,3 +98,4 @@ func _on_exit_pressed() -> void:
 
 func _on_exit_mouse_entered() -> void:
 	$exit.grab_focus()
+	current_focus_index = 3 # Update current index when hovering
