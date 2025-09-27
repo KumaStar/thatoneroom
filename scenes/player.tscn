@@ -1,11 +1,28 @@
-[gd_scene load_steps=7 format=3 uid="uid://bsyjfabqilo1t"]
+[gd_scene load_steps=20 format=3 uid="uid://bsyjfabqilo1t"]
 
 [ext_resource type="Script" uid="uid://bnsv5bkwow01o" path="res://scripts/player.gd" id="1_g2els"]
 [ext_resource type="Texture2D" uid="uid://cg11tr574re0g" path="res://assets/Character/char_down.png" id="2_g2els"]
 [ext_resource type="Texture2D" uid="uid://delay85tlx346" path="res://assets/Character/Facial Expression/char_eidle_down.png" id="3_qhqgy"]
+[ext_resource type="Texture2D" uid="uid://d2ociglcu76xs" path="res://assets/Character/char_left.png" id="3_qlg0r"]
+[ext_resource type="Texture2D" uid="uid://be8d73e3lu4do" path="res://assets/Character/char_right.png" id="4_tuyoq"]
+[ext_resource type="Texture2D" uid="uid://c487eu0sh8psy" path="res://assets/Character/char_up.png" id="5_fjrip"]
+[ext_resource type="Texture2D" uid="uid://bxth1mac77dj2" path="res://assets/Character/Facial Expression/char_eidle_left.png" id="7_smehm"]
+[ext_resource type="Texture2D" uid="uid://bpo7fe62p2x06" path="res://assets/Character/Facial Expression/char_eidle_right.png" id="8_ur7pv"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qhqgy"]
 atlas = ExtResource("2_g2els")
+region = Rect2(0, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_smehm"]
+atlas = ExtResource("3_qlg0r")
+region = Rect2(0, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ur7pv"]
+atlas = ExtResource("4_tuyoq")
+region = Rect2(0, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y4r1p"]
+atlas = ExtResource("5_fjrip")
 region = Rect2(0, 0, 32, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_dqkch"]
@@ -15,7 +32,82 @@ animations = [{
 "texture": SubResource("AtlasTexture_qhqgy")
 }],
 "loop": true,
-"name": &"default",
+"name": &"down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_smehm")
+}],
+"loop": true,
+"name": &"left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ur7pv")
+}],
+"loop": true,
+"name": &"right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y4r1p")
+}],
+"loop": true,
+"name": &"up",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d2wvv"]
+atlas = ExtResource("3_qhqgy")
+region = Rect2(0, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3v2ag"]
+atlas = ExtResource("7_smehm")
+region = Rect2(0, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jej6c"]
+atlas = ExtResource("8_ur7pv")
+region = Rect2(0, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f1ej7"]
+atlas = ExtResource("7_smehm")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_f1ej7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d2wvv")
+}],
+"loop": true,
+"name": &"down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3v2ag")
+}],
+"loop": true,
+"name": &"left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jej6c")
+}],
+"loop": true,
+"name": &"right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f1ej7")
+}],
+"loop": true,
+"name": &"up",
 "speed": 5.0
 }]
 
@@ -25,19 +117,27 @@ size = Vector2(11, 52)
 [node name="player" type="CharacterBody2D"]
 script = ExtResource("1_g2els")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="body" type="AnimatedSprite2D" parent="."]
 scale = Vector2(1.25, 1.25)
 sprite_frames = SubResource("SpriteFrames_dqkch")
+animation = &"down"
+autoplay = "down"
 
-[node name="CharEidleDown" type="Sprite2D" parent="AnimatedSprite2D"]
-position = Vector2(0, 1)
-texture = ExtResource("3_qhqgy")
+[node name="face" type="AnimatedSprite2D" parent="."]
+position = Vector2(3.55271e-15, 1)
+scale = Vector2(1.25, 1.25)
+sprite_frames = SubResource("SpriteFrames_f1ej7")
+animation = &"down"
+autoplay = "down"
 
 [node name="shadow" type="AnimatedSprite2D" parent="."]
-modulate = Color(0, 0, 0, 0.061)
-position = Vector2(20, 7)
-skew = 0.733038
+visible = false
+modulate = Color(0, 0, 0, 0.624)
+show_behind_parent = true
+position = Vector2(21, 14)
+skew = 0.750492
 sprite_frames = SubResource("SpriteFrames_dqkch")
+animation = &"down"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, 11)
