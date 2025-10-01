@@ -1,0 +1,60 @@
+[gd_scene load_steps=9 format=3 uid="uid://dp4mocxl6sflb"]
+
+[ext_resource type="Script" uid="uid://ba4y5svxtnykq" path="res://scripts/bedroomdoor.gd" id="1_1f5dh"]
+[ext_resource type="Texture2D" uid="uid://c2act2j6bkd7w" path="res://assets/background/door.png" id="1_gnty1"]
+[ext_resource type="PackedScene" uid="uid://dipstva4vaskd" path="res://interactionComponents/interactable.tscn" id="3_rldvd"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1f5dh"]
+atlas = ExtResource("1_gnty1")
+region = Rect2(0, 0, 33, 49)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rldvd"]
+atlas = ExtResource("1_gnty1")
+region = Rect2(192, 0, 33, 49)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_trtic"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1f5dh")
+}],
+"loop": true,
+"name": &"closed",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rldvd")
+}],
+"loop": true,
+"name": &"open",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1cryd"]
+size = Vector2(32, 49.3333)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rlb8y"]
+size = Vector2(34, 82.6667)
+
+[node name="bedroomdoor" type="StaticBody2D"]
+scale = Vector2(1.5, 1.5)
+script = ExtResource("1_1f5dh")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_trtic")
+animation = &"closed"
+autoplay = "closed"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(2, 6.35783e-07)
+shape = SubResource("RectangleShape2D_1cryd")
+
+[node name="interactable" parent="." instance=ExtResource("3_rldvd")]
+visible = false
+interact_name = "open door"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="interactable"]
+position = Vector2(1.66667, 0)
+shape = SubResource("RectangleShape2D_rlb8y")
