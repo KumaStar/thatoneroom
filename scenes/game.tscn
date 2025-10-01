@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=4 uid="uid://fbauo7ytu4ua"]
+[gd_scene load_steps=28 format=4 uid="uid://fbauo7ytu4ua"]
 
 [ext_resource type="Script" uid="uid://dlg8r57tvkoy7" path="res://scripts/game.gd" id="1_lbhrr"]
 [ext_resource type="PackedScene" uid="uid://bsyjfabqilo1t" path="res://scenes/player.tscn" id="1_uwrxv"]
@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://cu7tlkdv2g22x" path="res://assets/background/Tiles.png" id="5_iywne"]
 [ext_resource type="Texture2D" uid="uid://ctt3bwoh32h6w" path="res://assets/background/Titles.png" id="6_gee14"]
 [ext_resource type="PackedScene" uid="uid://o753dx8ndqi0" path="res://scenes/worldborder.tscn" id="9_0tnpc"]
-[ext_resource type="Texture2D" uid="uid://c2act2j6bkd7w" path="res://assets/background/door.png" id="9_kvpfn"]
+[ext_resource type="PackedScene" uid="uid://dp4mocxl6sflb" path="res://scenes/bedroomdoor.tscn" id="9_kvpfn"]
 [ext_resource type="Texture2D" uid="uid://clwn2usc2hh8e" path="res://assets/background/Interior.png" id="9_vtaks"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_p57ef"]
@@ -19858,33 +19858,6 @@ texture = ExtResource("9_vtaks")
 sources/0 = SubResource("TileSetAtlasSource_dinhu")
 sources/2 = SubResource("TileSetAtlasSource_kvuet")
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_dinhu"]
-atlas = ExtResource("9_kvpfn")
-region = Rect2(4, 0, 51, 80)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_kvuet"]
-atlas = ExtResource("9_kvpfn")
-region = Rect2(52, 0, 52, 80)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_trtic"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_dinhu")
-}],
-"loop": true,
-"name": &"closed",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_kvuet")
-}],
-"loop": true,
-"name": &"open",
-"speed": 5.0
-}]
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0tnpc"]
 size = Vector2(54, 51)
 
@@ -19915,11 +19888,13 @@ collision_layer = 2
 zoom = Vector2(2, 2)
 
 [node name="PointLight2D" type="PointLight2D" parent="player"]
+visible = false
 energy = 0.52
 texture = ExtResource("3_u5sy4")
 texture_scale = 0.86
 
 [node name="darkness" type="CanvasModulate" parent="."]
+visible = false
 position = Vector2(680, -137)
 color = Color(0.092397, 0.0923971, 0.092397, 1)
 
@@ -19982,17 +19957,8 @@ scale = Vector2(1.5, 1.5)
 tile_map_data = PackedByteArray("AABPAA4AAgAWAAMAAABPAA8AAgAWAAQAAABPABAAAgAWAAUAAABQAA4AAgAXAAMAAABQAA8AAgAXAAQAAABQABAAAgAXAAUAAAA=")
 tile_set = SubResource("TileSet_trtic")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="doors"]
-position = Vector2(653, 700)
-scale = Vector2(1.5, 1.5)
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="doors/StaticBody2D"]
-sprite_frames = SubResource("SpriteFrames_trtic")
-animation = &"open"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="doors/StaticBody2D"]
-
-[node name="Area2D" type="Area2D" parent="doors/StaticBody2D"]
+[node name="bedroomdoor" parent="doors" instance=ExtResource("9_kvpfn")]
+position = Vector2(655, 701)
 
 [node name="furniture" type="Node" parent="."]
 
