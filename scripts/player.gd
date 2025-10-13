@@ -9,7 +9,13 @@ var last_direction: String = "down"
 var moving: bool = false
 
 func _process(delta: float) -> void:
-
+	if global_position.y < 372:
+		z_index = 2
+	elif global_position.y > 699:
+		z_index = 4
+	else:
+		z_index = 3
+			
 	if Input.is_action_just_pressed("flash"):
 		point_light_2d.visible = not point_light_2d.visible
 
