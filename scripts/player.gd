@@ -1,18 +1,17 @@
 extends CharacterBody2D
 
+@onready var point_light_2d: PointLight2D = $PointLight2D
 @export var speed: float = 200.0
 @onready var anim_sprite: AnimatedSprite2D = $body
 @onready var face: AnimatedSprite2D = $face
 
 var last_direction: String = "down"
 var moving: bool = false
+
 func _process(delta: float) -> void:
-	if global_position.y < 372:
-		z_index = 2
-	elif global_position.y > 699:
-		z_index = 4
-	else:
-		z_index = 3
+
+	if Input.is_action_just_pressed("flash"):
+		point_light_2d.visible = not point_light_2d.visible
 
 func _physics_process(delta: float) -> void:
 	var input_vector := Vector2.ZERO
