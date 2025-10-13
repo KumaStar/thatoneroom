@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://bwh8a4upw4y1e"]
+
+[ext_resource type="Texture2D" uid="uid://b6d15w0f4bi4o" path="res://assets/background/Furnitures.png" id="1_d4oew"]
+[ext_resource type="Script" uid="uid://b8jh1will4nvr" path="res://scripts/bookshelf.gd" id="1_kkcsm"]
+[ext_resource type="PackedScene" uid="uid://dipstva4vaskd" path="res://interactionComponents/interactable.tscn" id="3_dg3ix"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kvuet"]
+size = Vector2(44, 11)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_waxlh"]
+size = Vector2(45, 19)
+
+[node name="bookshelf" type="StaticBody2D"]
+z_index = 4
+script = ExtResource("1_kkcsm")
+
+[node name="bookshelfsprite" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_d4oew")
+region_enabled = true
+region_rect = Rect2(1154.8, 1261.22, 93.1702, 83.4901)
+
+[node name="bookshelfcol" type="CollisionShape2D" parent="."]
+position = Vector2(-1, -16)
+shape = SubResource("RectangleShape2D_kvuet")
+
+[node name="Interactable" parent="." instance=ExtResource("3_dg3ix")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable"]
+position = Vector2(0, 14)
+shape = SubResource("RectangleShape2D_waxlh")
+debug_color = Color(0.381097, 0.866623, 0.984329, 0.42)

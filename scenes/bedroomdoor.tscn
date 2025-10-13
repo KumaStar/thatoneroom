@@ -32,7 +32,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1cryd"]
-size = Vector2(32, 49.3333)
+size = Vector2(31.3333, 13.3333)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rlb8y"]
 size = Vector2(34, 82.6667)
@@ -47,8 +47,7 @@ animation = &"closed"
 autoplay = "closed"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2(2, 6.35783e-07)
+position = Vector2(0.333333, -17.3333)
 shape = SubResource("RectangleShape2D_1cryd")
 
 [node name="interactable" parent="." instance=ExtResource("3_rldvd")]
