@@ -15,7 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://dm57q78axpa" path="res://interactionComponents/interacting_component.tscn" id="9_ur7pv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qhqgy"]
-size = Vector2(20, 62)
+size = Vector2(20, 3)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qhqgy"]
 atlas = ExtResource("2_g2els")
@@ -376,7 +376,7 @@ y_sort_enabled = true
 script = ExtResource("1_g2els")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1, 6)
+position = Vector2(1, 35.5)
 shape = SubResource("RectangleShape2D_qhqgy")
 
 [node name="shadow" type="AnimatedSprite2D" parent="."]

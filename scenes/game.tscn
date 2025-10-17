@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=4 uid="uid://fbauo7ytu4ua"]
+[gd_scene load_steps=32 format=4 uid="uid://fbauo7ytu4ua"]
 
 [ext_resource type="Script" uid="uid://dlg8r57tvkoy7" path="res://scripts/game.gd" id="1_lbhrr"]
 [ext_resource type="PackedScene" uid="uid://bsyjfabqilo1t" path="res://scenes/player.tscn" id="1_uwrxv"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://clwn2usc2hh8e" path="res://assets/background/Interior.png" id="9_vtaks"]
 [ext_resource type="PackedScene" uid="uid://dpf4v4ql483r8" path="res://scenes/bed.tscn" id="10_vtaks"]
 [ext_resource type="PackedScene" uid="uid://bwh8a4upw4y1e" path="res://scenes/bookshelf.tscn" id="11_kvpfn"]
+[ext_resource type="PackedScene" uid="uid://cv8hjm6pew4di" path="res://scenes/washingmachine.tscn" id="12_dinhu"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_p57ef"]
 texture = ExtResource("5_iywne")
@@ -19869,14 +19870,17 @@ size = Vector2(96, 14)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dinhu"]
 size = Vector2(83, 37)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_0tnpc"]
-radius = 16.0
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_dinhu"]
+points = PackedVector2Array(-24, 0, -24, -12, -10, -21, 8, -21, 23, -12, 23, -1, 16, 6, 16, 28, -16, 28, -16, 6)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kvuet"]
 size = Vector2(44, 11)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gee14"]
 size = Vector2(96, 5)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dinhu"]
+radius = 14.0
 
 [node name="game" type="Node2D"]
 script = ExtResource("1_lbhrr")
@@ -19897,13 +19901,11 @@ limit_smoothed = true
 position_smoothing_speed = 16.0
 
 [node name="PointLight2D" type="PointLight2D" parent="player"]
-visible = false
 energy = 0.67
 texture = ExtResource("3_u5sy4")
 texture_scale = 1.16
 
 [node name="darkness" type="CanvasModulate" parent="."]
-visible = false
 position = Vector2(680, -137)
 color = Color(0.092397, 0.0923971, 0.092397, 1)
 
@@ -20010,20 +20012,20 @@ position = Vector2(-0.5, -8.5)
 shape = SubResource("RectangleShape2D_dinhu")
 
 [node name="circletable" type="StaticBody2D" parent="furniture"]
-z_index = 2
+z_index = 1
 position = Vector2(1308, 477)
 
 [node name="tablesprite" type="Sprite2D" parent="furniture/circletable"]
-z_index = 4
+z_index = 1
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("5_gee14")
 region_enabled = true
 region_rect = Rect2(1147.68, 1144.3, 104.501, 94.256)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="furniture/circletable"]
-z_index = 4
-position = Vector2(0, -10)
-shape = SubResource("CircleShape2D_0tnpc")
+z_index = 1
+position = Vector2(1, 2)
+shape = SubResource("ConvexPolygonShape2D_dinhu")
 
 [node name="bookshelf" parent="furniture" instance=ExtResource("11_kvpfn")]
 z_index = 2
@@ -20057,3 +20059,45 @@ region_rect = Rect2(1824.16, 1822.12, 191.664, 103.818)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="furniture/table"]
 position = Vector2(0, -28.5)
 shape = SubResource("RectangleShape2D_gee14")
+
+[node name="toilet" type="StaticBody2D" parent="furniture"]
+z_index = 3
+position = Vector2(1256, 753)
+
+[node name="toiletsprite" type="Sprite2D" parent="furniture/toilet"]
+position = Vector2(-509, -39)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_gee14")
+region_enabled = true
+region_rect = Rect2(977.485, 2144.87, 65.1141, 140.246)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="furniture/toilet"]
+position = Vector2(-511, -50)
+shape = SubResource("CapsuleShape2D_dinhu")
+
+[node name="sprite" type="Sprite2D" parent="furniture/toilet"]
+position = Vector2(-485, -39)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("5_gee14")
+region_enabled = true
+region_rect = Rect2(1367.91, 2141.73, 48.2762, 42.7307)
+
+[node name="washingmachine" parent="furniture" instance=ExtResource("12_dinhu")]
+z_index = 3
+position = Vector2(1017, 722)
+scale = Vector2(0.4, 0.4)
+
+[node name="ColorRect" type="ColorRect" parent="."]
+custom_minimum_size = Vector2(1000, 1000)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -233.0
+offset_right = 1805.0
+offset_bottom = 1309.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+color = Color(0, 0, 0, 1)

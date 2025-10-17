@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://cv8hjm6pew4di"]
+
+[ext_resource type="Texture2D" uid="uid://b6d15w0f4bi4o" path="res://assets/background/Furnitures.png" id="1_bju63"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e2m76"]
+size = Vector2(90, 4.25)
+
+[node name="washingmachine" type="StaticBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -33)
+shape = SubResource("RectangleShape2D_e2m76")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_bju63")
+region_enabled = true
+region_rect = Rect2(672.023, 1661.95, 95.98, 153.061)
