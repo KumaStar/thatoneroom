@@ -3,6 +3,8 @@ extends VBoxContainer
 # Array of menu buttons for navigation
 var menu_buttons = []
 var current_focus_index = 0
+var button_type = null
+
 
 func _ready() -> void:
 	$play.grab_focus() 
@@ -31,8 +33,6 @@ func _on_play_focus_entered() -> void:
 func _on_play_focus_exited() -> void:
 	$play.modulate = Color.WHITE
 	$play.add_theme_font_size_override("font_size", 70)
-func _on_play_pressed() -> void:
-	get_tree().change_scene_to_file("res://scenes/game.tscn")
 
 func _on_play_mouse_entered() -> void:
 	$play.grab_focus() # make hover = focus
@@ -88,3 +88,8 @@ func _on_exit_pressed() -> void:
 func _on_exit_mouse_entered() -> void:
 	$exit.grab_focus()
 	current_focus_index = 3 # Update current index when hovering
+
+
+func _on_fade_timer_timeout() -> void:
+	if button_type == "play" :
+		get_tree().change_scene_to_file("res://scenes/game.tscn")
