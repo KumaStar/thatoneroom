@@ -32,12 +32,13 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1cryd"]
-size = Vector2(31.3333, 13.3333)
+size = Vector2(31.999985, 2.6666718)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rlb8y"]
 size = Vector2(34, 82.6667)
 
 [node name="bedroomdoor" type="StaticBody2D"]
+z_index = 3
 scale = Vector2(1.5, 1.5)
 script = ExtResource("1_1f5dh")
 
@@ -47,7 +48,8 @@ animation = &"closed"
 autoplay = "closed"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.333333, -17.3333)
+y_sort_enabled = true
+position = Vector2(0.66667604, 23.333334)
 shape = SubResource("RectangleShape2D_1cryd")
 
 [node name="interactable" parent="." instance=ExtResource("3_rldvd")]
