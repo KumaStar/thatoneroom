@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://dipstva4vaskd" path="res://interactionComponents/interactable.tscn" id="3_dg3ix"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kvuet"]
-size = Vector2(44, 11)
+size = Vector2(46, 40.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_waxlh"]
 size = Vector2(45, 19)
@@ -21,7 +21,7 @@ region_enabled = true
 region_rect = Rect2(1154.8, 1261.22, 93.1702, 83.4901)
 
 [node name="bookshelfcol" type="CollisionShape2D" parent="."]
-position = Vector2(-1, -16)
+position = Vector2(0, -0.75)
 shape = SubResource("RectangleShape2D_kvuet")
 
 [node name="Interactable" parent="." instance=ExtResource("3_dg3ix")]
